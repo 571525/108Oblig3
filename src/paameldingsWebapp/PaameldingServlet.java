@@ -46,6 +46,7 @@ public class PaameldingServlet extends HttpServlet {
 			deltagerliste.tilfojDeltager(fornavn, etternavn, mobilInt, passordKryptert, kjonnBool);
 
 			request.getSession().setAttribute("paamelding", paamelding);
+			request.getSession().setAttribute("eier", mobil);
 			request.getRequestDispatcher("WEB-INF/paameldingsbekreftelse.jsp").forward(request, response);
 		
 		} else {

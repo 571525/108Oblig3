@@ -14,7 +14,7 @@ public class DeltagerlisteEAO {
 
 	@SuppressWarnings("unchecked")
 	public List<DeltagerEntity> hentAlleDeltagere() {
-		return em.createQuery("SELECT p FROM dat108obl3.deltagerliste p").getResultList();
+		return em.createQuery("SELECT p FROM DeltagerEntity p").getResultList();
 	}
 
 	public synchronized void tilfojDeltager(String fornavn, String etternavn, int mobil, String passord,

@@ -19,21 +19,35 @@
 			<th align="left">Navn</th>
 			<th align="left">Mobil</th>
 		</tr>
-		<c:forEach var="d" items="${deltager}">
-			<tr bgcolor="#aaffaa">
-				<c:if test="${d.kjonn}">
-					<td align="center">&#9792;</td>
-				</c:if>
-				<c:if test="${!d.kjonn}">
-					<td align="center">&#9794;</td>
-				</c:if>
-				<td>${d.fornavn} ${d.etternavn}</td>
-				<td>${d.mobil}</td>
-			</tr>
+		<c:forEach var="delt" items="${deltagere}">
+			<c:if test="${delt.mobil==eier }">
+				<tr bgcolor="#aaffaa">
+					<c:if test="${delt.kjonn}">
+						<td align="center">&#9792;</td>
+					</c:if>
+					<c:if test="${!delt.kjonn}">
+						<td align="center">&#9794;</td>
+					</c:if>
+					<td>${delt.fornavn} ${delt.etternavn}</td>
+					<td>${delt.mobil}</td>
+				</tr>
+			</c:if>
+			<c:if test="${delt.mobil!=eier }">
+				<tr>
+					<c:if test="${delt.kjonn}">
+						<td align="center">&#9792;</td>
+					</c:if>
+					<c:if test="${!delt.kjonn}">
+						<td align="center">&#9794;</td>
+					</c:if>
+					<td>${delt.fornavn} ${delt.etternavn}</td>
+					<td>${delt.mobil}</td>
+				</tr>
+			</c:if>
 		</c:forEach>
 	</table>
 	<p>
-		<a href="loggut">Ferdig</a>
+		<a href="logginn">Ferdig</a>
 	</p>
 </body>
 </html>
