@@ -10,15 +10,15 @@ import javax.persistence.PersistenceContext;
 public class DeltagerlisteEAO {
 
 	@PersistenceContext(name = "Gr7PU")
-    private EntityManager em;
+	private EntityManager em;
 
+	@SuppressWarnings("unchecked")
 	public List<DeltagerEntity> hentAlleDeltagere() {
-		@SuppressWarnings("unchecked")
-		List<DeltagerEntity> liste = (List<DeltagerEntity>) em.createQuery("SELECT * FROM dat108Obl3.deltagerliste;");
-		return liste;
+		return em.createQuery("SELECT p FROM dat108obl3.deltagerliste p").getResultList();
 	}
 
-	public synchronized void tilfojDeltager(String fornavn, String etternavn, int mobil, String passord, boolean kjonn) {
+	public synchronized void tilfojDeltager(String fornavn, String etternavn, int mobil, String passord,
+			boolean kjonn) {
 		DeltagerEntity ny = new DeltagerEntity();
 		ny.setFornavn(fornavn);
 		ny.setEtternavn(etternavn);
@@ -27,7 +27,5 @@ public class DeltagerlisteEAO {
 		ny.setKjonn(kjonn);
 		em.persist(ny);
 	}
-	
-	//TODO metoder som håndterer db kobling
-	
+
 }

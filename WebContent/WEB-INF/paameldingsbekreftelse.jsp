@@ -19,6 +19,6 @@
 		&nbsp;&nbsp;&nbsp;${paamelding.mobil}<br /> 
 		&nbsp;&nbsp;&nbsp;${paamelding.kjonn}
 	</p>
-	<a href="DeltagerlisteServlet">Gå til deltagerlisten</a>
+	<a href="deltagerliste">Gå til deltagerlisten</a>
 </body>
 </html>

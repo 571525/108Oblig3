@@ -19,16 +19,16 @@
 			<th align="left">Navn</th>
 			<th align="left">Mobil</th>
 		</tr>
-		<c:forEach var="deltager" items="${deltagerliste}">
+		<c:forEach var="d" items="${deltager}">
 			<tr bgcolor="#aaffaa">
-				<c:if test="${deltager.getKjønn()}">
+				<c:if test="${d.kjonn}">
 					<td align="center">&#9792;</td>
 				</c:if>
-				<c:if test="${!deltager.getKjønn()}">
+				<c:if test="${!d.kjonn}">
 					<td align="center">&#9794;</td>
 				</c:if>
-				<td>${deltager.getFornavn()} ${deltager.getEtternavn()}</td>
-				<td>${deltager.getMobil()}</td>
+				<td>${d.fornavn} ${d.etternavn}</td>
+				<td>${d.mobil}</td>
 			</tr>
 		</c:forEach>
 	</table>

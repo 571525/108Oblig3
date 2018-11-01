@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Deltagerliste
  */
-@WebServlet("/Deltagerliste")
+@WebServlet(name = "Deltagerliste", urlPatterns = "/deltagerliste")
 public class DeltagerlisteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,7 +27,6 @@ public class DeltagerlisteServlet extends HttpServlet {
 
 		// Ta vare på i requesten til JSP-en
 		request.getSession().setAttribute("deltagere", deltagere);
-
-		request.getRequestDispatcher("WEB-INF/deltagere.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/deltagerliste.jsp").forward(request, response);
 	}
 }

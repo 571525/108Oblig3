@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Paamelding
- */
+
 @WebServlet(name = "PaameldingServlet", urlPatterns = "/paamelding")
 public class PaameldingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,14 +36,14 @@ public class PaameldingServlet extends HttpServlet {
 		String kjonn = paamelding.getKjonn();
 
 		if (Valider.validert(fornavn, etternavn, mobil, passord, passordRepetert, kjonn)) {
-			int mobilNy = Integer.parseInt(mobil);
+			int mobilInt = Integer.parseInt(mobil);
 			String passordKryptert = PassordUtil.krypterPassord(passord);
-			boolean kjonnNy = false;
+			boolean kjonnBool = false;
 			if (kjonn.equals("kvinne")) {
-				kjonnNy = true;
+				kjonnBool = true;
 			}
 
-			deltagerliste.tilfojDeltager(fornavn, etternavn, mobilNy, passordKryptert, kjonnNy);
+			deltagerliste.tilfojDeltager(fornavn, etternavn, mobilInt, passordKryptert, kjonnBool);
 
 			request.getSession().setAttribute("paamelding", paamelding);
 			request.getRequestDispatcher("WEB-INF/paameldingsbekreftelse.jsp").forward(request, response);

@@ -1,7 +1,8 @@
+--DROP SCHEMA IF EXISTS dat108obl3 CASCADE;
 --CREATE SCHEMA dat108obl3;
---DROP TABLE IF EXISTS dat108Obl3.deltagerliste;
+--DROP TABLE IF EXISTS dat108obl3.deltagerliste CASCADE;
 
-CREATE TABLE dat108Obl3.deltagerliste(
+CREATE TABLE dat108obl3.deltagerliste(
 kjonn BOOLEAN NOT NULL,
 fornavn VARCHAR(25) NOT NULL,
 etternavn VARCHAR(50) NOT NULL,
