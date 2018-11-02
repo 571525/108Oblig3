@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet(name = "PaameldingServlet", urlPatterns = "/paamelding")
 public class PaameldingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +26,9 @@ public class PaameldingServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
 		paamelding = new Paamelding(request);
+		
 		String fornavn = paamelding.getFornavn();
 		String etternavn = paamelding.getEtternavn();
 		String mobil = paamelding.getMobil();
@@ -42,24 +43,23 @@ public class PaameldingServlet extends HttpServlet {
 			if (kjonn.equals("kvinne")) {
 				kjonnBool = true;
 			}
-			request.getSession().setAttribute("paamelding", paamelding);
 			
+			request.getSession().setAttribute("paamelding", paamelding);
+
 			try {
 				deltagerliste.tilfojDeltager(fornavn, etternavn, mobilInt, passordKryptert, kjonnBool);
 				request.getSession().setAttribute("eier", mobil);
 				request.getSession().setAttribute("loggedIn", true);
 				request.getRequestDispatcher("WEB-INF/paameldingsbekreftelse.jsp").forward(request, response);
-			}catch (Exception e) {
+			} catch (Exception e) {
 				request.getSession().setAttribute("feilmelding", "Noe gikk galt. kanskje du allerede er tilmeldt?");
-				request.getRequestDispatcher("WEB-INF/paameldingsskjema.jsp").forward(request, response);
+				response.sendRedirect("paamelding");
 			}
-			
-			
-		
+
 		} else {
 			paamelding.setFeilmeldinger();
 			request.getSession().setAttribute("paamelding", paamelding);
-			request.getRequestDispatcher("WEB-INF/paameldingsskjema.jsp").forward(request, response);
+			response.sendRedirect("paamelding");
 		}
 
 	}

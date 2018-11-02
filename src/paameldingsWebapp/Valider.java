@@ -2,8 +2,8 @@ package paameldingsWebapp;
 
 public class Valider {
 	public static final String PASSWORD = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{4,}$";
-	public static final String ANY_LETTER_OR_SPACE_OR_SCORE_START_WITH_A_CAPS_LETTER = "[A-Z∆ÿ≈]{1,1}[a-zA-ZÊ¯Â∆ÿ≈ -]{1,19}";
-	public static final String ANY_LETTER_OR_SCORE_START_WITH_A_CAPS_LETTER = "[A-Z∆ÿ≈]{1,1}[a-zA-ZÊ¯Â∆ÿ≈.-]{1,19}$";
+	public static final String ANY_LETTER_OR_SPACE_OR_SCORE_START_WITH_A_CAPS_LETTER = "^[A-Z∆ÿ≈]{1,1}[a-zA-ZÊ¯Â∆ÿ≈ -]{1,19}$";
+	public static final String ANY_LETTER_OR_SCORE_START_WITH_A_CAPS_LETTER = "^[A-Z∆ÿ≈]{1,1}[a-zA-ZÊ¯Â∆ÿ≈.-]{1,19}$";
 	public static final String ANY_DIGIT = "[0-9]";
 
 	public static boolean validert(String fornavn, String etternavn, String mobil, String passord, String passordRep,
