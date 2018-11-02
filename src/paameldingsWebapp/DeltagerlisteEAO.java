@@ -13,10 +13,15 @@ public class DeltagerlisteEAO {
 	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	public List<DeltagerEntity> hentAlleDeltagere() {
+	public synchronized List<DeltagerEntity> hentAlleDeltagere() {
 		return em.createQuery("SELECT p FROM DeltagerEntity p").getResultList();
 	}
 
+	public synchronized DeltagerEntity find(String mobil) {
+		int m = Integer.parseInt(mobil);
+		return em.find(DeltagerEntity.class, m);
+	}
+	
 	public synchronized void tilfojDeltager(String fornavn, String etternavn, int mobil, String passord,
 			boolean kjonn) {
 		DeltagerEntity ny = new DeltagerEntity();

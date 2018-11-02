@@ -42,12 +42,19 @@ public class PaameldingServlet extends HttpServlet {
 			if (kjonn.equals("kvinne")) {
 				kjonnBool = true;
 			}
-
-			deltagerliste.tilfojDeltager(fornavn, etternavn, mobilInt, passordKryptert, kjonnBool);
-
 			request.getSession().setAttribute("paamelding", paamelding);
-			request.getSession().setAttribute("eier", mobil);
-			request.getRequestDispatcher("WEB-INF/paameldingsbekreftelse.jsp").forward(request, response);
+			
+			try {
+				deltagerliste.tilfojDeltager(fornavn, etternavn, mobilInt, passordKryptert, kjonnBool);
+				request.getSession().setAttribute("eier", mobil);
+				request.getSession().setAttribute("loggedIn", true);
+				request.getRequestDispatcher("WEB-INF/paameldingsbekreftelse.jsp").forward(request, response);
+			}catch (Exception e) {
+				request.getSession().setAttribute("feilmelding", "Noe gikk galt. kanskje du allerede er tilmeldt?");
+				request.getRequestDispatcher("WEB-INF/paameldingsskjema.jsp").forward(request, response);
+			}
+			
+			
 		
 		} else {
 			paamelding.setFeilmeldinger();

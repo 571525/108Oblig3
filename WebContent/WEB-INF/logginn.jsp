@@ -14,24 +14,22 @@
 	<h2>Logg inn</h2>
 	<p>Det er kun registrerte deltagere som får se deltagerlisten.</p>
 	<p>
-		<font color="red">${innlogData.feilPassordEllerMobil }</font>
+		<font color="red">${feilmelding}</font>
 	</p>
-	<form method="post" class="pure-form pure-form-aligned">
+	<form method="post" class="pure-form pure-form-aligned" action="logginn">
 		<fieldset>
 			<div class="pure-control-group">
 				<label for="mobil">Mobil:</label> <input type="text" name="mobil" />
 			</div>
 			<div class="pure-control-group">
-				<label for="passord">Passord:</label> <input type="password"
-					name="passord" />
+				<label for="passord">Passord:</label> <input type="password" name="passord" />
 			</div>
 			<div class="pure-controls">
-				<button type="submit" class="pure-button pure-button-primary">Logg
-					inn</button>
+				<button type="submit" class="pure-button pure-button-primary">Logg inn</button>
 			</div>
 		</fieldset>
 	</form>
-	<a class="pure-form pure-form-aligned" href="paamelding.jsp">Meld deg på!</a>
+	<a class="pure-form pure-form-aligned" href="paamelding">Meld deg på!</a>
 
 </body>
 </html>

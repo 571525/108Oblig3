@@ -1,14 +1,15 @@
 package paameldingsWebapp;
 
 public class Valider {
-	public static final String PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{4,}$";
-	public static final String ANY_LETTER_OR_SPACE = "[a-zA-ZÊ¯Â∆ÿ≈ ]";
+	public static final String PASSWORD = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{4,}$";
+	public static final String ANY_LETTER_OR_SPACE_OR_SCORE_START_WITH_A_CAPS_LETTER = "[A-Z∆ÿ≈]{1,1}[a-zA-ZÊ¯Â∆ÿ≈ -]{1,19}";
+	public static final String ANY_LETTER_OR_SCORE_START_WITH_A_CAPS_LETTER = "[A-Z∆ÿ≈]{1,1}[a-zA-ZÊ¯Â∆ÿ≈.-]{1,19}$";
 	public static final String ANY_DIGIT = "[0-9]";
 
 	public static boolean validert(String fornavn, String etternavn, String mobil, String passord, String passordRep,
 			String kjonn) {
-		return gyldigtPassord(passord) && passordLike(passord, passordRep) && gyldigtNavn(fornavn)
-				&& gyldigtNavn(etternavn) && gyldigMobil(mobil) && gyldigtKjonn(kjonn);
+		return gyldigtPassord(passord) && passordLike(passord, passordRep) && gyldigtFornavn(fornavn)
+				&& gyldigtEtternavn(etternavn) && gyldigMobil(mobil) && gyldigtKjonn(kjonn);
 	}
 	
 	public static boolean gyldigtKjonn(String kjonn) {
@@ -32,11 +33,18 @@ public class Valider {
 		return p.equals(rep);
 	}
 
-	public static boolean gyldigtNavn(String navn) {
+	public static boolean gyldigtFornavn(String navn) {
 		if (navn == null) {
 			return false;
 		}
-		return navn.matches("^" + ANY_LETTER_OR_SPACE + "+$");
+		return navn.matches("^" + ANY_LETTER_OR_SPACE_OR_SCORE_START_WITH_A_CAPS_LETTER + "+$");
+	}
+	
+	public static boolean gyldigtEtternavn(String navn) {
+		if (navn == null) {
+			return false;
+		}
+		return navn.matches("^" + ANY_LETTER_OR_SCORE_START_WITH_A_CAPS_LETTER + "+$");
 	}
 
 	public static boolean gyldigMobil(String mobil) {

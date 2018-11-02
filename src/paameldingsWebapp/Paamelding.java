@@ -125,11 +125,11 @@ public class Paamelding {
 	}
 
 	public void setFeilmeldinger() {
-		if(!Valider.gyldigtNavn(fornavn)) {
+		if(!Valider.gyldigtFornavn(fornavn)) {
 			this.fornavn = "";
 			this.fornavnFeil = "Ugyldigt fornavn";
 		}
-		if(!Valider.gyldigtNavn(etternavn)) {
+		if(!Valider.gyldigtEtternavn(etternavn)) {
 			this.etternavn = "";
 			this.etternavnFeil = "Ugyldigt etternavn";
 		}

@@ -23,10 +23,14 @@ public class DeltagerlisteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<DeltagerEntity> deltagere = deltagerliste.hentAlleDeltagere();
+		if (request.getSession().getAttribute("loggedIn") != null) {
+			List<DeltagerEntity> deltagere = deltagerliste.hentAlleDeltagere();
 
-		// Ta vare på i requesten til JSP-en
-		request.getSession().setAttribute("deltagere", deltagere);
-		request.getRequestDispatcher("WEB-INF/deltagerliste.jsp").forward(request, response);
+			// Ta vare på i requesten til JSP-en
+			request.getSession().setAttribute("deltagere", deltagere);
+			request.getRequestDispatcher("WEB-INF/deltagerliste.jsp").forward(request, response);
+		} else {
+			response.sendRedirect("logginn");
+		}
 	}
 }

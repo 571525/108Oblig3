@@ -13,6 +13,7 @@
 </head>
 <body>
 	<h2>Påmelding</h2>
+	<p><font color="red">${feilmelding }</font></p>
 	<form method="post" class="pure-form pure-form-aligned" action="paamelding">
 		<fieldset>
 			<div class="pure-control-group">
@@ -46,6 +47,7 @@
 			</div>
 		</fieldset>
 	</form>
+	<p>Eller <a href="logginn">Logg Inn</a></p>
 
 	<script type="text/javascript">
 	<!--TODO validering og passord-->	
